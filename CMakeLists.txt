@@ -20,3 +20,4 @@ project ("Silicon")
 
 # Include sub-projects.
 add_subdirectory ("SiliconEngine")
+add_subdirectory ("SiliconTest")
