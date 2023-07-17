@@ -1,12 +1,35 @@
-﻿# CMakeList.txt : CMake project for SiliconEngine, include source and define
-# project specific logic here.
-#
+﻿##
+# CMakeList.txt
+# 
+# CMake project for SiliconEngine.
+##
 
-# Add source to this project's executable.
-add_executable (SiliconEngine "SiliconEngine.cpp" "SiliconEngine.h")
+##
+# Sub-project name
+##
 
-if (CMAKE_VERSION VERSION_GREATER 3.12)
-  set_property(TARGET SiliconEngine PROPERTY CXX_STANDARD 20)
-endif()
+set(SILICON_ENGINE SiliconEngine)
 
-# TODO: Add tests and install targets if needed.
+##
+# Sub-project files
+##
+
+file(GLOB_RECURSE engine_files "src/*")
+
+##
+# Visual Studio project generation
+##
+
+source_group(TREE ${CMAKE_SOURCE_DIR} FILES ${engine_files})
+
+##
+# Add files to executable
+##
+
+add_library(${SILICON_ENGINE} STATIC ${engine_files})
+
+##
+# Include directories
+##
+
+target_include_directories(${SILICON_ENGINE} PUBLIC "${CMAKE_SOURCE_DIR}/extern/include")
