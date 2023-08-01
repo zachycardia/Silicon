@@ -13,7 +13,7 @@
 #include <iostream>
 #include <Windows.h>
 
-#include "utility/singleton.h"
+#include "singleton.h"
 
 namespace Silicon {
 

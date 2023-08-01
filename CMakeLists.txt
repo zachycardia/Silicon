@@ -19,5 +19,6 @@ endif()
 project ("Silicon")
 
 # Include sub-projects.
+add_subdirectory ("SiliconCommon")
 add_subdirectory ("SiliconEngine")
 add_subdirectory ("SiliconTest")
