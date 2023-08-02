@@ -7,6 +7,7 @@
 **/
 
 #include "silicon_engine.h"
+#include "silicon_graphics.h"
 #include "logging/logger.h"
 
 namespace Silicon {
@@ -20,11 +21,20 @@ void Engine::Initialize() {
 	// Platform
 	m_window.Initialize();
 
+	// Graphics
+	Graphics::Singleton_Initialize();
+	Graphics::Instance().SetWindowHandle(m_window.GetWindowHandle());
+	Graphics::Instance().Initialize();
+
 	Logger::Instance().Trace("Engine initialized.");
 }
 
 void Engine::Destroy() {
 	Logger::Instance().Trace("Destroying engine.");
+
+	// Graphics
+	Graphics::Instance().Destroy();
+	Graphics::Singleton_Reset();
 
 	// Platform
 	m_window.Destroy();

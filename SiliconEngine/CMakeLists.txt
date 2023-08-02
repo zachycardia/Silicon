@@ -35,6 +35,7 @@ add_library(${SILICON_ENGINE} STATIC ${engine_files})
 target_include_directories(${SILICON_ENGINE} PUBLIC "${PROJECT_SOURCE_DIR}/SiliconCommon/src") # SiliconCommon
 target_include_directories(${SILICON_ENGINE} PUBLIC "${PROJECT_SOURCE_DIR}/lib") # Common libraries
 target_include_directories(${SILICON_ENGINE} PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/lib") # Libraries
+target_include_directories(${SILICON_ENGINE} PRIVATE "${CMAKE_SOURCE_DIR}/SiliconGraphics/src") # SiliconGraphics
 
 ##
 # External libraries
@@ -50,4 +51,5 @@ target_link_libraries(${SILICON_ENGINE}
 	#SiliconCommon # DISABLED - Header-only.
 	${common_ext_static_libs}
 	${engine_ext_static_libs}
+	SiliconGraphics
 )
