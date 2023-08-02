@@ -6,6 +6,8 @@ namespace Silicon {
 
 class Window {
 public:
+	void* GetWindowHandle() { return m_windowHandle; }
+
 	void Initialize();
 
 	void Destroy();
@@ -15,7 +17,7 @@ public:
 	void PollEvents();
 
 private:
-	GLFWwindow* m_window;
+	GLFWwindow* m_windowHandle;
 };
 
 }
