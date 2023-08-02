@@ -29,12 +29,12 @@ public:
 	 * @param   args    Arguments to be passed to the constructor.
 	**/
 	template <typename ...Args>
-	static void Initialize(Args&& ...args);
+	static void Singleton_Initialize(Args&& ...args);
 
 	/**
 	 * @brief   Destroys the singleton instance.
 	**/
-	static void Reset();
+	static void Singleton_Reset();
 
 private:
 	static T* s_instance;
@@ -47,12 +47,12 @@ inline T& Singleton<T>::Instance() {
 
 template <typename T>
 template <typename ...Args>
-inline void Singleton<T>::Initialize(Args&& ...args) {
+inline void Singleton<T>::Singleton_Initialize(Args&& ...args) {
 	s_instance = new T{std::forward<Args>(args)...};
 }
 
 template <typename T>
-inline void Singleton<T>::Reset() {
+inline void Singleton<T>::Singleton_Reset() {
 	if (s_instance) { delete s_instance; }
 	s_instance = nullptr;
 }
