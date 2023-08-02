@@ -4,6 +4,17 @@
 
 namespace Silicon {
 
+Window::ExtensionInfo Window::GetExtensionInfo() {
+	uint32_t count{0};
+	const char** names;
+	names = glfwGetRequiredInstanceExtensions(&count);
+
+	return ExtensionInfo{
+		.count = count,
+		.names = names
+	};
+}
+
 void Window::Initialize() {
 	// Initialize GLFW.
 	if (!glfwInit()) {
