@@ -12,5 +12,11 @@
 int main() {
 	Silicon::Engine engine{};
 
+	engine.Initialize();
+
+	engine.Run();
+
+	engine.Destroy();
+
 	return 0;
 }

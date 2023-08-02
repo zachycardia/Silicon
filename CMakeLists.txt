@@ -18,6 +18,12 @@ endif()
 
 project ("Silicon")
 
+##
+# External libraries
+##
+
+file(GLOB_RECURSE common_ext_static_libs "lib/*.lib")
+
 # Include sub-projects.
 add_subdirectory ("SiliconCommon")
 add_subdirectory ("SiliconEngine")
