@@ -8,13 +8,20 @@
 
 #pragma once
 
+#include "platform/window.h"
+
 namespace Silicon {
 
 class Engine {
 public:
-	Engine();
+	void Initialize();
+
+	void Destroy();
+
+	void Run();
 
 private:
+	Window m_window;
 };
 
 }
