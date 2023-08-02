@@ -11,6 +11,12 @@
 set(SILICON_GRAPHICS SiliconGraphics)
 
 ##
+# Vulkan
+##
+
+find_package(Vulkan REQUIRED)
+
+##
 # Sub-project files
 ##
 
@@ -32,9 +38,12 @@ add_library(${SILICON_GRAPHICS} STATIC ${graphics_files})
 # Include directories
 ##
 
-target_include_directories(${SILICON_GRAPHICS} PRIVATE "${PROJECT_SOURCE_DIR}/SiliconCommon/src") # SiliconCommon
-target_include_directories(${SILICON_GRAPHICS} PUBLIC "${PROJECT_SOURCE_DIR}/lib") # Common libraries
-target_include_directories(${SILICON_GRAPHICS} PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/lib") # Libraries
+target_include_directories(${SILICON_GRAPHICS} 
+	PRIVATE "${PROJECT_SOURCE_DIR}/SiliconCommon/src" # SiliconCommon
+	PUBLIC "${PROJECT_SOURCE_DIR}/lib" # Common libraries
+	PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/lib" # Libraries
+	PUBLIC ${Vulkan_INCLUDE_DIRS} # Vulkan
+)
 
 ##
 # External libraries
@@ -50,4 +59,5 @@ target_link_libraries(${SILICON_GRAPHICS}
 	#SiliconCommon # DISABLED - Header-only.
 	${common_ext_static_libs}
 	${graphics_ext_shared_libs}
+	${Vulkan_LIBRARIES}
 )
