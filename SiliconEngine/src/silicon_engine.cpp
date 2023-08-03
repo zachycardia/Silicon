@@ -23,10 +23,12 @@ void Engine::Initialize() {
 
 	// Graphics
 	Graphics::Singleton_Initialize();
-	Graphics::Instance().SetWindowHandle(m_window.GetWindowHandle());
 	Window::ExtensionInfo extensionInfo = m_window.GetExtensionInfo();
-	Graphics::Instance().SetExtensionInfo(extensionInfo.count, extensionInfo.names);
-	Graphics::Instance().Initialize();
+	Graphics::Instance().Initialize(Graphics::InitializeInfo{
+		.windowHandle = m_window.GetWindowHandle(),
+		.extensionCount = extensionInfo.count,
+		.extensionNames = extensionInfo.names
+	});
 
 	Logger::Instance().Trace("Engine initialized.");
 }
