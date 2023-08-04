@@ -17,13 +17,19 @@ void Graphics::Initialize(InitializeInfo info) {
 		.extensionNames = info.extensionNames
 	});
 
+	// Initialize surface.
+	m_surface.Initialize(Vk_Surface::CreateInfo{
+		.instance = m_instance.Handle(),
+		.surfaceCreationFunc = info.surfaceCreationFunc
+	});
+
 	// Initialize device.
-	m_device.Initialize(m_instance.Handle());
+	m_device.Initialize(m_instance.Handle(), m_surface.Handle());
 }
 
 void Graphics::Destroy() {
 	m_device.Destroy();
-	m_surface.Destroy();
+	m_surface.Destroy(m_instance.Handle());
 	m_instance.Destroy();
 }
 

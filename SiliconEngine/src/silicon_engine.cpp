@@ -7,6 +7,9 @@
 **/
 
 #include "silicon_engine.h"
+
+#include <functional>
+
 #include "silicon_graphics.h"
 #include "logging/logger.h"
 
@@ -27,7 +30,8 @@ void Engine::Initialize() {
 	Graphics::Instance().Initialize(Graphics::InitializeInfo{
 		.windowHandle = m_window.GetWindowHandle(),
 		.extensionCount = extensionInfo.count,
-		.extensionNames = extensionInfo.names
+		.extensionNames = extensionInfo.names,
+		.surfaceCreationFunc = std::bind(&Window::CreateWindowSurface, &m_window, std::placeholders::_1, std::placeholders::_2)
 	});
 
 	Logger::Instance().Trace("Engine initialized.");

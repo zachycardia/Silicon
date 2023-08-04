@@ -9,7 +9,7 @@ class Vk_Device {
 
 public:
 
-	void Initialize(VkInstance instance);
+	void Initialize(VkInstance instance, VkSurfaceKHR surface);
 
 	void Destroy();
 
@@ -17,25 +17,28 @@ private:
 
 	struct QueueFamilyIndices {
 		std::optional<uint32_t> graphicsFamily;
+		std::optional<uint32_t> presentFamily;
 
 		bool IsComplete() {
-			return graphicsFamily.has_value();
+			return graphicsFamily.has_value() &&
+				presentFamily.has_value();
 		}
 	};
 
 	VkPhysicalDevice m_physicalDevice;
 	VkDevice m_device;
 	VkQueue m_graphicsQueue;
+	VkQueue m_presentQueue;
 
-	void InitializePhysicalDevice(VkInstance instance);
+	void InitializePhysicalDevice(VkInstance instance, VkSurfaceKHR surface);
 
-	bool IsDeviceSuitable(VkPhysicalDevice device);
+	bool IsDeviceSuitable(VkPhysicalDevice device, VkSurfaceKHR surface);
 
-	QueueFamilyIndices FindQueueFamilies(VkPhysicalDevice device);
+	QueueFamilyIndices FindQueueFamilies(VkPhysicalDevice device, VkSurfaceKHR surface);
 
-	void InitializeLogicalDevice(VkInstance instance);
+	void InitializeLogicalDevice(VkInstance instance, VkSurfaceKHR surface);
 
-	void InitializeQueues();
+	void InitializeQueues(VkSurfaceKHR surface);
 
 };
 

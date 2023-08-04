@@ -24,6 +24,8 @@ public:
 
 	void PollEvents();
 
+	VkResult CreateWindowSurface(VkInstance instance, VkSurfaceKHR* surfacePtr);
+
 private:
 	GLFWwindow* m_windowHandle;
 };

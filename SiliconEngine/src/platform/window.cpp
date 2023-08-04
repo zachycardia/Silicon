@@ -43,4 +43,8 @@ void Window::PollEvents() {
 	glfwPollEvents();
 }
 
+VkResult Window::CreateWindowSurface(VkInstance instance, VkSurfaceKHR* surfacePtr) {
+	return glfwCreateWindowSurface(instance, m_windowHandle, nullptr, surfacePtr);
+}
+
 }
