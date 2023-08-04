@@ -41,13 +41,9 @@ void Vk_Instance::Create(InstanceCreateInfo info) {
 	// Create instance.
 	VkAssert(vkCreateInstance(&createInfo, nullptr, &m_instance),
 		"Failed to create instance.");
-
-	// Initialize device.
-	m_device.Initialize(m_instance);
 }
 
 void Vk_Instance::Destroy() {
-	m_device.Destroy();
 	vkDestroyInstance(m_instance, nullptr);
 }
 

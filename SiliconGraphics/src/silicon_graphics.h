@@ -2,6 +2,7 @@
 
 #include "singleton.h"
 
+#include "vk_device.h"
 #include "vk_instance.h"
 
 namespace Silicon {
@@ -25,6 +26,7 @@ private:
 	void* m_windowHandle;
 
 	Vk_Instance m_instance;
+	Vk_Device m_device;
 
 };
 

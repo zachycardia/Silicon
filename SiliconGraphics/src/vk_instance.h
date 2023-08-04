@@ -3,8 +3,6 @@
 #include <vector>
 #include <vulkan/vulkan.h>
 
-#include "vk_device.h"
-
 namespace Silicon {
 
 class Vk_Instance {
@@ -15,6 +13,8 @@ public:
 		uint32_t extensionCount;
 		const char** extensionNames;
 	};
+
+	VkInstance Handle() const { return m_instance; }
 
 	void Create(InstanceCreateInfo info);
 
@@ -31,7 +31,6 @@ private:
 #endif
 
 	VkInstance m_instance;
-	Vk_Device m_device;
 
 	void InitializeValidationLayer();
 
