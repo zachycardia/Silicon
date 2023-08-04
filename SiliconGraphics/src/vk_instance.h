@@ -3,6 +3,8 @@
 #include <vector>
 #include <vulkan/vulkan.h>
 
+#include "vk_device.h"
+
 namespace Silicon {
 
 class Vk_Instance {
@@ -29,6 +31,7 @@ private:
 #endif
 
 	VkInstance m_instance;
+	Vk_Device m_device;
 
 	void InitializeValidationLayer();
 
